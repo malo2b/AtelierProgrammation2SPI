@@ -6,7 +6,7 @@ def dateEstValide(jour:int,mois:int,annee:int):
     Verifie si la date entrez par l'utilisateur est valide
     """
     estValide = False
-    estBissextile = anneeBissextile()
+    estBissextile = anneeBissextile(annee)
     if(jour>=1 and jour <= 31):
         if(mois>=1 and mois<=12):
             if(annee>0):
@@ -33,7 +33,7 @@ def saisieDateNaissance():
         except ValueError:
             print("Veuillez saisir une date de naissance valide !")
             
-    return datetime.date(yyyy,mm,jj)
+    # return datetime.date(yyyy,mm,jj)
 
     
 
