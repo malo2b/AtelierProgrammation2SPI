@@ -1,3 +1,5 @@
+import random
+
 def message_imc(imc:float) -> str:
     """
     Fonction qui a partir de la valeur d'IMC passé en paramètre
@@ -27,4 +29,25 @@ def message_imc(imc:float) -> str:
         
     return interpretation
 
-print(message_imc(17))
+def test(nbrTest:int):
+    """
+    Fonction qui permet de tester la fonction message_imc a partir de nombre aléatoires
+    """
+    
+    for i in range(nbrTest):
+        imcToTest = random.randint(10,50)
+        print("Verifier correspondance entre {} et {}".format(imcToTest, message_imc(imcToTest)))
+    
+# test(10)
+
+while True:
+    try:
+        imc = int(input("Veuillez saisir votre IMC : "))  
+        if (imc < 99 and imc > 10):
+            break   
+        else:
+            print("Veuillez saisir une IMC Valide")
+    except ValueError:
+        print("Veuillez faire une saisie valide !")
+        
+print(message_imc(imc))
