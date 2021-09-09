@@ -2,6 +2,10 @@ import random
 
 
 def anneeBissextile(annee:int):
+    """
+    Inputs: int:annee
+    Outputs: bool:True if bissextile else false
+    """
     res = False
     if (annee % 4 == 0 and (annee % 100 != 0)) or annee % 400 == 0:
         res = True
