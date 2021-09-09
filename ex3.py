@@ -1,18 +1,17 @@
 from math import sqrt 
 import random
 
-def discriminant(a:float,b:float,c:float):
+def discriminant(a:float,b:float,c:float) -> float:
     """fonction permettant de retourner le discriminant pour une equation sous la forme ax2+bx+c"""
     return b*b-(4*a*c)
 
-
-def racine_unique(a:float,b:float):
+def racine_unique(a:float,b:float) -> float:
     """
     fonction de calcul d'une racine unique pour un polynome de degré 2
     """
     return -b / 2 * a
 
-def racineDouble(a,b,delta,num):
+def racineDouble(a,b,delta,num) -> float:
     """
     fonction permettant de calculer les solutions d'une equations du second ordre 
     """
@@ -47,14 +46,14 @@ def solution_equation(a,b,c) -> str:
     
     return solution
     
-def equation(a:float,b:float,c:float)-> None:
+def equation(a:float,b:float,c:float) -> None:
     """
     Procédure d'appel a la résolution de l'equation
     """
     print(solution_equation(a,b,c))
      
     
-def test_equation(nbrTests:int):
+def test_equation(nbrTests:int) -> None:
     """
     Procédure de test de l'equation
     """

@@ -1,9 +1,12 @@
 from ex2 import anneeBissextile
 import datetime as date
  
-def dateEstValide(jour:int,mois:int,annee:int):
+def dateEstValide(jour:int,mois:int,annee:int) -> bool:
     """
-    Verifie si la date entrez par l'utilisateur est valide
+    Inputs:
+        int:jour, mois, annee # Correspondant a une date de naissance
+    Outputs:
+        bool: Si date valide True sinon False
     """
     
     # CONSTANTES #
@@ -18,17 +21,20 @@ def dateEstValide(jour:int,mois:int,annee:int):
     if estBissextile:
         DAY_OF_MONTH[2] = 29
         
-    if type(annee) == int:
+    if int(annee):
         if mois >=1 and mois <= 12:
             if jour >=1 and jour <= DAY_OF_MONTH[mois]:
-                estValide = True
-            
+                if (date.date.today() > date.date(annee,mois,jour)):
+                    estValide = True
+                    
     return estValide
     
     
-def saisieDateNaissance():
+def saisieDateNaissance() -> date:
     """
     Fonction de saisie date de naissance
+    Output:
+        date:dateNaissance 
     """
     
     # Saisie utilisateur #
@@ -47,18 +53,21 @@ def saisieDateNaissance():
             
     return date.date(yyyy,mm,jj)
 
-def age(dateNaissance:date):
+def age(dateNaissance:date) -> int:
     """
-    Fonction retournant l'age de l'individue
+    Inputs: date:dateNaissance
+    Output: int: Age
     """
     
     dateAjourdhui = date.date.today()
     age = dateAjourdhui - dateNaissance
     return int(age.days/365.25)
     
-def estMajeur(dateNaissance:date):
+def estMajeur(dateNaissance:date) -> bool:
     """
-    Fonction retournant True si l'individue est majeu
+    Inputs:
+        date:dateNaissance
+    Output: bool True si majeur, False sinon
     """
     
     AGE_MAJORITE = 18
@@ -69,7 +78,10 @@ def estMajeur(dateNaissance:date):
         estMajeure = True
     return estMajeure    
 
-def testAcces():
+def testAcces() -> None:
+    """
+    Procédure pour démarer un test d'accès
+    """
     dateNaissance = saisieDateNaissance()
     print ("Bonjour vous avez {} ans".format(age(dateNaissance)))
     if estMajeur(dateNaissance):
