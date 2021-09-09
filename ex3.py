@@ -24,7 +24,7 @@ def racineDouble(a,b,delta,num):
     return resultat
     
     
-def str_equation(a,b,c):
+def str_equation(a,b,c) -> str:
     """formate le format d'affichage pour l'equation """
     return "{}x2 + {}x + {}".format(a,b,c)
     
