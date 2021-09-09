@@ -39,11 +39,11 @@ def solution_equation(a,b,c) -> str:
     delta = discriminant(a,b,c)
     
     if (delta < 0):
-        solution = "Solution de l'équation ax2+bx+c=0 Pas de racine réelle"
+        solution = "Solution de l'équation {}=0 Pas de racine réelle".format(str_equation(a,b,c))
     elif (delta == 0):
-        solution = "Solution de l'équation ax2+bx+c=0 Racine unique : x = {}".format(racine_unique(a,b))
+        solution = "Solution de l'équation {}=0 Racine unique : x = {}".format(str_equation(a,b,c),racine_unique(a,b))
     else:
-        solution = "Solution de l'équation ax2+bx+c=0 \n Deux racines \n x1= {} \n x2= {}".format(round(racineDouble(a,b,delta,1),2),round(racineDouble(a,b,delta,2),2))
+        solution = "Solution de l'équation {}=0 \n Deux racines \n x1= {} \n x2= {}".format(str_equation(a,b,c),round(racineDouble(a,b,delta,1),2),round(racineDouble(a,b,delta,2),2))
     
     return solution
     
@@ -65,4 +65,5 @@ def test_equation(nbrTests:int):
         print("Pour a = {} b = {} c = {} : ".format(a,b,c))
         equation(a,b,c)
         print("\n\n")
+        
 test_equation(3)
