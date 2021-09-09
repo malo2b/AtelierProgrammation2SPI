@@ -18,9 +18,9 @@ def racineDouble(a,b,delta,num):
     """
     resultat = 0.0
     if(num==1):
-        resultat = -b+sqrt(delta)/(2*a)
+        resultat = (-b+sqrt(delta))/(2*a)
     else:
-        resultat = -b-sqrt(delta)/(2*a)
+        resultat = (-b-sqrt(delta))/(2*a)
     return resultat
     
     
