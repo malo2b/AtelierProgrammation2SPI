@@ -1,92 +1,92 @@
 from ex2 import anneeBissextile
 import datetime as date
- 
-def dateEstValide(jour:int,mois:int,annee:int) -> bool:
+
+def date_est_valide(jour:int,mois:int,annee:int) -> bool:
     """
     Inputs:
         int:jour, mois, annee # Correspondant a une date de naissance
     Outputs:
         bool: Si date valide True sinon False
     """
-    
+
     # CONSTANTES #
     DAY_OF_MONTH = [
-        None,31,28,31,30,31,30,31,31,30,31,30,31 # Tableau contenant le nombre de jour dans le mois 
+        None,31,28,31,30,31,30,31,31,30,31,30,31 # Tableau contenant le nombre de jour dans le mois
     ]                                            # correspondant a l'index
-    
-    # Variables #
-    estValide = False
-    estBissextile = anneeBissextile(annee)
 
-    if estBissextile:
+    # Variables #
+    est_valide = False
+    est_bissextile = anneeBissextile(annee)
+
+    if est_bissextile:
         DAY_OF_MONTH[2] = 29
-        
+
     if int(annee):
         if mois >=1 and mois <= 12:
             if jour >=1 and jour <= DAY_OF_MONTH[mois]:
-                if (date.date.today() > date.date(annee,mois,jour)):
-                    estValide = True
-                    
-    return estValide
-    
-    
-def saisieDateNaissance() -> date:
+                if date.date.today() > date.date(annee,mois,jour):
+                    est_valide = True
+
+    return est_valide
+
+
+def saisie_date_naissance() -> date:
     """
     Fonction de saisie date de naissance
     Output:
-        date:dateNaissance 
+        date:date_naissance
     """
-    
+
     # Saisie utilisateur #
-    
+
     while True:
         try:
             jj = int(input("Veuillez saisir votre jour de naissance :  "))
-            mm = int(input("Veuillez saisir votre mois de naissance :  "))  
-            yyyy = int(input("Veuillez saisir votre année de naissance :  "))  
-            if dateEstValide(jj,mm,yyyy):
-                break   
+            mm = int(input("Veuillez saisir votre mois de naissance :  "))
+            yyyy = int(input("Veuillez saisir votre année de naissance :  "))
+            if date_est_valide(jj,mm,yyyy):
+                break
             else:
                 print("Veuillez saisir une date de naissance valide !")
         except ValueError:
             print("Veuillez saisir une date de naissance valide !")
-            
+
     return date.date(yyyy,mm,jj)
 
-def age(dateNaissance:date) -> int:
+def age(date_naissance:date) -> int:
     """
-    Inputs: date:dateNaissance
+    Inputs: date:date_naissance
     Output: int: Age
     """
-    
-    dateAjourdhui = date.date.today()
-    age = dateAjourdhui - dateNaissance
-    return int(age.days/365.25)
-    
-def estMajeur(dateNaissance:date) -> bool:
+
+    date_ajourdhui = date.date.today()
+    calcul_age = date_ajourdhui - date_naissance
+    return int(calcul_age.days/365.25)
+
+def est_majeur(date_naissance:date) -> bool:
     """
     Inputs:
-        date:dateNaissance
+        date:date_naissance
     Output: bool True si majeur, False sinon
     """
-    
+
     AGE_MAJORITE = 18
     DATEDAUJOURDHUI = date.date.today()
-    estMajeure = False
-    age = DATEDAUJOURDHUI.year - dateNaissance.year
-    if(age>=AGE_MAJORITE):
-        estMajeure = True
-    return estMajeure    
+    est_majeure = False
+    calcul_age = DATEDAUJOURDHUI.year - date_naissance.year
+    if calcul_age>=AGE_MAJORITE:
+        est_majeure = True
+    return est_majeure
 
-def testAcces() -> None:
+def test_acces() -> None:
     """
     Procédure pour démarer un test d'accès
     """
-    dateNaissance = saisieDateNaissance()
-    print ("Bonjour vous avez {} ans".format(age(dateNaissance)))
-    if estMajeur(dateNaissance):
+    date_naissance = saisie_date_naissance()
+    print ("Bonjour vous avez {} ans".format(age(date_naissance)))
+    if est_majeur(date_naissance):
         print("Accès autorisé")
-    else:    
+    else:
         print("Accès interdit")
-    
-testAcces()
+
+test_acces()
