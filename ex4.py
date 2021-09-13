@@ -14,20 +14,10 @@ def date_est_valide(jour:int,mois:int,annee:int) -> bool:
         None,31,28,31,30,31,30,31,31,30,31,30,31 # Tableau contenant le nombre de jour dans le mois
     ]                                            # correspondant a l'index
 
-    # Variables #
-    est_valide = False
-    est_bissextile = anneeBissextile(annee)
-
-    if est_bissextile:
+    if anneeBissextile(annee):
         DAY_OF_MONTH[2] = 29
 
-    if int(annee):
-        if mois >=1 and mois <= 12:
-            if jour >=1 and jour <= DAY_OF_MONTH[mois]:
-                if date.date.today() > date.date(annee,mois,jour):
-                    est_valide = True
-
-    return est_valide
+    return mois >=1 and mois <= 12 and jour >=1 and jour <= DAY_OF_MONTH[mois] and date.date.today() > date.date(annee,mois,jour)
 
 
 def saisie_date_naissance() -> date:
